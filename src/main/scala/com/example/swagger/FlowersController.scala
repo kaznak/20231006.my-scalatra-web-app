@@ -1,15 +1,23 @@
 package com.example.swagger
 
 import org.scalatra._
+import com.example.swagger.FlowersSwagger
 
 // JSON-related libraries
 import org.json4s.{DefaultFormats, Formats}
 
 // JSON handling support from Scalatra
 import org.scalatra.json._
+import org.scalatra.swagger._
 
-class FlowersController extends ScalatraServlet with NativeJsonSupport {
+class FlowersController
+    extends ScalatraServlet
+    with NativeJsonSupport
+    with SwaggerSupport {
 
+  protected def applicationDescription: String = "The Flowershop API"
+  implicit protected def swagger: SwaggerEngine = new FlowersSwagger()
+      
   // Sets up automatic case class to JSON output serialization
   protected implicit val jsonFormats: Formats = DefaultFormats
 

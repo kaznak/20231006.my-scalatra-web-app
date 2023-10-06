@@ -14,7 +14,8 @@ lazy val hello = (project in file("."))
       "org.eclipse.jetty" % "jetty-webapp" % "9.4.43.v20210629" % "container",
       "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
       "org.scalatra" %% "scalatra-json" % ScalatraVersion,
-      "org.json4s" %% "json4s-native" % "4.0.6"
+      "org.json4s" %% "json4s-native" % "4.0.6",
+      "org.scalatra" %% "scalatra-swagger" % ScalatraVersion
     )
   )
 
