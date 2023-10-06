@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  title: The Flowershop API
+  version: 1.0.0
+  description: Docs for the Flowers API
+  termsOfService: http://scalatra.org
+  contact:
+    name: Scalatra API Team
+    url: http://scalatra.org
+    email: apiteam@scalatra.org
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+paths:
+  /flowers/:
+    get:
+      operationId: getFlowers
+      summary: Show all flowers
+      description: Shows all the flowers in the flower shop. You can search it too.
+      deprecated: false
+      parameters:
+        - name: name
+          description: A name to search for
+          required: false
+          in: query
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Flower'
+  /flowers/{slug}:
+    get:
+      operationId: findBySlug
+      summary: Find a flower by its slug
+      description: Returns a flower based on its slug
+      deprecated: false
+      parameters:
+        - name: slug
+          description: Slug of flower to fetch
+          required: true
+          in: path
+          type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Flower'
+definitions:
+  Flower:
+    type: object
+    properties:
+      slug:
+        type: string
+      name:
+        type: string
+    required:
+      - slug
+      - name
+securityDefinitions: {}
