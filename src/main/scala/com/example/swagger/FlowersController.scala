@@ -30,13 +30,13 @@ class FlowersController(implicit val swagger: Swagger)
   get("/") {
    */
   val getFlowers = apiOperation[List[Flower]]("getFlowers")
-  getFlowers.summary("Show all flowers")
-  getFlowers.description(
-    "Shows all the flowers in the flower shop. You can search it too."
-  )
-  getFlowers.parameter(
-    queryParam[Option[String]]("name").description("A name to search for")
-  )
+    .summary("Show all flowers")
+    .description(
+      "Shows all the flowers in the flower shop. You can search it too."
+    )
+    .parameter(
+      queryParam[Option[String]]("name").description("A name to search for")
+    )
   get("/", operation(getFlowers)) {
     params.get("name") match {
       case Some(name) =>
