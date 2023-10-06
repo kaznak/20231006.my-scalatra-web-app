@@ -15,7 +15,7 @@ object FlowersApiInfo
       ContactInfo(
         "Scalatra API Team",
         "http://scalatra.org",
-        "apiteam@scalatra.org",
+        "apiteam@scalatra.org"
       ),
       LicenseInfo(
         "MIT",
