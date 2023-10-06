@@ -47,7 +47,11 @@ class FlowersController(implicit val swagger: Swagger)
 
   /** Find a flower using its slug.
     */
-  get("/:slug") {
+  val findBySlug = apiOperation[Flower]("findBySlug")
+    .summary("Find a flower by its slug")
+    .description("Returns a flower based on its slug")
+    .parameter(pathParam[String]("slug").description("Slug of flower to fetch"))
+  get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
       case None    => halt(404)
