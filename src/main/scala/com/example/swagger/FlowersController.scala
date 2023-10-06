@@ -10,14 +10,13 @@ import org.json4s.{DefaultFormats, Formats}
 import org.scalatra.json._
 import org.scalatra.swagger._
 
-class FlowersController
+class FlowersController(implicit val swagger: Swagger)
     extends ScalatraServlet
     with NativeJsonSupport
     with SwaggerSupport {
 
   protected def applicationDescription: String = "The Flowershop API"
-  implicit protected def swagger: SwaggerEngine = new FlowersSwagger()
-      
+
   // Sets up automatic case class to JSON output serialization
   protected implicit val jsonFormats: Formats = DefaultFormats
 
